@@ -1,0 +1,27 @@
+{
+  "skill_name": "context-compact",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Remember the coding task and exact constraints, compact old diagnostics, then implement the function and verify the protected tests.",
+      "expected_output": "Saved task continuity; local Qwen completes the implementation, keeps protected-file hashes and passes the independent checks.",
+      "files": ["formatter.py", "test_formatter.py", "AGENTS.md"],
+      "evidence": "official-desktop/evidence/context-control-20261110T183924Z/live-verification.json"
+    },
+    {
+      "id": 2,
+      "prompt": "Recover when a proposed checkpoint is malformed, truncated, cancelled, failed or cannot shrink safely.",
+      "expected_output": "One bounded format repair; otherwise no history replacement, no fabricated completion and no repeated completed tools.",
+      "files": [],
+      "evidence": "official-desktop/evidence/context-control-20261110T183924Z/runtime-tests-10/result.json"
+    },
+    {
+      "id": 3,
+      "prompt": "Continue after the context-based response allowance is exhausted, but honor a user Stop arriving while a checkpoint is persisted.",
+      "expected_output": "Verified exhausted allowance continues in a fresh turn; unknown usage does not auto-continue; user cancellation prevents a new wakeup.",
+      "files": [],
+      "evidence": "official-desktop/evidence/context-control-20261110T183924Z/runtime-tests-10/result.json"
+    }
+  ],
+  "comparison_note": "Runtime mechanics tested with the official local Harness; real model continuity tested with local Qwen through Strata. No Codex or cloud-model quality comparison was run."
+}
